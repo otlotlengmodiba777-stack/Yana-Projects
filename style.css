@@ -1,0 +1,149 @@
+/* ==========================================================================
+   YANA PROJECTS - MASTER STYLESHEET
+   Brand Colors:
+   - Yana Blue / Teal Accent: #59A5B5
+   - Dark Charcoal: #3A3D40
+   - Charcoal Hover / Border: #2C2F32
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --- Root Variables --- */
+:root {
+  --yana-blue: #59A5B5;
+  --yana-blue-hover: #478B99;
+  --yana-charcoal: #3A3D40;
+  --yana-charcoal-dark: #2C2F32;
+  --yana-bg-light: #F8FAFC;
+  --yana-border-light: #E2E8F0;
+  --yana-border-dark: #4A4D50;
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Base Styles --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  background-color: #E9E7DB;
+  color: var(--yana-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.bg-white,
+[class*="bg-white"] {
+  background-color: #E9E7DB !important;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* --- Custom Utility Classes (Tailwind Extensions) --- */
+.bg-yana-blue {
+  background-color: var(--yana-blue) !important;
+}
+
+.bg-yana-charcoal {
+  background-color: var(--yana-charcoal) !important;
+}
+
+.text-yana-blue {
+  color: var(--yana-blue) !important;
+}
+
+.text-yana-charcoal {
+  color: var(--yana-charcoal) !important;
+}
+
+.border-yana-blue {
+  border-color: var(--yana-blue) !important;
+}
+
+/* --- Smooth Hover Transitions & Micro-Interactions --- */
+.btn-primary {
+  background-color: var(--yana-blue);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(89, 165, 181, 0.25);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--yana-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(89, 165, 181, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-charcoal {
+  background-color: var(--yana-charcoal);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-charcoal:hover {
+  background-color: var(--yana-charcoal-dark);
+  transform: translateY(-2px);
+}
+
+/* --- Card & Section Styling Enhancements --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yana-blue);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--yana-blue-hover);
+}

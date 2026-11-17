@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yana Projects | Building Tomorrow, Together.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f1f2ef;--surface:#fff;--ink:#2d3138;--muted:#5c626b;--line:#d3d6d0;
+  --dark:#33383f;--dark-ink:#f1f2ef;--dark-muted:#b4b9bf;
+  --b1:#3b4048;--b2:#8e9095;--blue:#6bb7cc;--blued:#2b7f93;
+  --btn:#2b7f93;--on-btn:#fff;
+  --head:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1b1e23;--surface:#242830;--ink:#eceee9;--muted:#a5abb2;--line:#363b43;--dark:#14161a;--b1:#5b626c;--b2:#a3a7ad;--btn:#6bb7cc;--on-btn:#13171b}}
+:root[data-theme="dark"]{--bg:#1b1e23;--surface:#242830;--ink:#eceee9;--muted:#a5abb2;--line:#363b43;--dark:#14161a;--b1:#5b626c;--b2:#a3a7ad;--btn:#6bb7cc;--on-btn:#13171b}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dark);z-index:30}
+h1,h2,h3{font-family:var(--head);font-weight:800;line-height:.95;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:14px 26px;border-radius:2px;background:var(--btn);color:var(--on-btn);font-weight:600;text-decoration:none;border:2px solid var(--btn);cursor:pointer;font-family:inherit;font-size:16px}
+.btn.ghost{background:transparent;color:var(--dark-ink);border-color:var(--dark-muted)}
+.btn:hover{filter:brightness(1.1)}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--dark);color:var(--dark-ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:40px;height:40px}
+.brand b{font:800 25px/1 var(--head);display:block}
+.brand small{font-size:12px;color:var(--dark-muted);display:block;margin-top:3px}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;align-items:center}
+nav a{text-decoration:none;font-weight:500;font-size:15px}
+nav a:hover{color:var(--blue)}
+nav .btn{padding:10px 20px;color:var(--on-btn)}
+
+/* HERO: blueprint that draws itself */
+.hero{background:var(--dark);color:var(--dark-ink);position:relative;overflow:hidden;
+  background-image:linear-gradient(rgba(107,183,204,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(107,183,204,.09) 1px,transparent 1px);background-size:48px 48px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:end;min-height:640px}
+.hero-copy{padding:80px 0 96px;align-self:center;position:relative;z-index:2}
+.hero h1{font-size:clamp(60px,9.5vw,128px)}
+.hero p{max-width:29em;color:var(--dark-muted);font-size:19px;margin:26px 0 34px}
+.actions{display:flex;gap:14px;flex-wrap:wrap}
+.bp{width:100%;display:block;align-self:end}
+.bp .g{stroke:var(--dark-muted);stroke-width:1;stroke-dasharray:4 5;opacity:.55}
+.bp text{fill:var(--blue);font:600 13px var(--body)}
+.bp .ol{fill:none;stroke:var(--blue);stroke-width:1.6}
+
+.strip{background:var(--blued);color:#fff;overflow:hidden;white-space:nowrap;font:700 26px/1 var(--head);padding:16px 0}
+.strip div{display:inline-block}
+.strip span{display:inline-block;padding:0 22px}
+.strip span::after{content:"";display:inline-block;width:10px;height:10px;background:var(--dark);margin-left:44px;vertical-align:middle}
+
+section{padding:100px 0}
+.intro{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start}
+.intro h2{font-size:clamp(44px,6vw,76px)}
+.intro p{margin:0 0 16px;color:var(--muted);max-width:34em}
+.intro p:first-of-type{color:var(--ink);font-size:20px}
+.sec-h{margin-bottom:40px;max-width:34em}
+.sec-h h2{font-size:clamp(40px,5.5vw,68px)}
+.sec-h p{color:var(--muted);margin:14px 0 0}
+
+/* services: expanding panels */
+.services{background:var(--surface);border-block:1px solid var(--line)}
+.panels{display:flex;gap:12px;height:430px}
+.panel{flex:1;min-width:0;background:var(--dark);color:var(--dark-ink);border:0;text-align:left;padding:30px 28px;cursor:pointer;font:inherit;position:relative;overflow:hidden;transition:flex .5s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;justify-content:flex-end}
+.panel::before{content:"";position:absolute;left:0;top:0;width:100%;height:8px;background:var(--blue)}
+.panel:nth-child(2)::before{background:var(--b2)}
+.panel:nth-child(3)::before{background:#fff}
+.panel .bg{position:absolute;right:-10px;top:24px;width:150px;height:150px;opacity:.14}
+.panel h3{font-size:34px;margin-bottom:12px}
+.panel p{margin:0;color:var(--dark-muted);font-size:16px;max-height:0;opacity:0;transition:max-height .5s,opacity .4s}
+.panel.open{flex:2.6}
+.panel.open p{max-height:220px;opacity:1}
+
+/* process: tower builds as you scroll */
+.proc{display:grid;grid-template-columns:240px 1fr;gap:56px}
+.tower{position:sticky;top:calc(100px + env(safe-area-inset-top,0px));align-self:start}
+.tower svg{width:100%;display:block}
+.fl{fill:var(--line);transition:fill .5s}
+.fl.on{fill:var(--blue)}
+.steps{list-style:none;margin:0;padding:0}
+.step{min-height:34vh;border-left:4px solid var(--line);padding:0 0 40px 28px;transition:border-color .4s,opacity .4s;opacity:.45}
+.step.cur{border-color:var(--blue);opacity:1}
+.step h3{font-size:clamp(34px,4.5vw,52px);margin-bottom:10px}
+.step p{margin:0;color:var(--muted);max-width:28em;font-size:18px}
+
+.values{background:var(--dark);color:var(--dark-ink)}
+.values .sec-h p{color:var(--dark-muted)}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #4a5058;border-left:1px solid #4a5058}
+.vals div{padding:30px 26px 34px;border-right:1px solid #4a5058;border-bottom:1px solid #4a5058;transition:background .3s}
+.vals div:hover{background:var(--blued)}
+.vals b{font:800 clamp(30px,3.4vw,42px)/1 var(--head);display:block;margin-bottom:8px}
+.vals span{color:var(--dark-muted);font-size:15.5px;display:block}
+.vals div:hover span{color:#fff}
+
+/* before/after slider */
+.ba{position:relative;aspect-ratio:16/8;width:100%;overflow:hidden;border-radius:2px;user-select:none;background:var(--surface)}
+.ba .layer{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font:800 clamp(30px,5vw,56px)/1 var(--head)}
+.ba small{display:block;font:500 14px var(--body);margin-top:10px;opacity:.8}
+.ba .after{background:linear-gradient(160deg,#6bb7cc,#2b7f93);color:#fff}
+.ba .before{background:repeating-linear-gradient(135deg,#8e9095 0 14px,#7f8186 14px 28px);color:#2d3138;clip-path:inset(0 50% 0 0)}
+.ba .bar{position:absolute;top:0;bottom:0;left:50%;width:4px;background:#fff;transform:translateX(-2px);pointer-events:none}
+.ba .bar::after{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba:focus-within{outline:3px solid var(--blue);outline-offset:3px}
+.wall{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.wall figure{margin:0;aspect-ratio:4/3;display:grid;place-items:center;background:var(--surface);border:2px dashed var(--b2);color:var(--muted);font-size:14px;text-align:center}
+
+.top{background:#272b31;color:var(--dark-muted);font-size:13.5px}
+.top .wrap{display:flex;justify-content:space-between;gap:16px;min-height:38px;align-items:center;flex-wrap:wrap}
+.top span{display:flex;gap:22px;flex-wrap:wrap}.top a{text-decoration:none}.top a:hover{color:var(--blue)}
+.rot{position:relative;height:1.3em;margin-top:22px;font:700 clamp(26px,3.2vw,40px)/1.2 var(--head);color:var(--blue)}
+.rot span{position:absolute;left:0;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
+.rot span.on{opacity:1;transform:none}
+.pc{margin:0}.pc .ph{aspect-ratio:4/3;background:var(--surface);border:2px dashed var(--b2);display:grid;place-items:center;color:var(--muted);font-size:14px;transition:border-color .3s}
+.pc:hover .ph{border-color:var(--blue)}.pc small{display:block;margin-top:14px;color:var(--btn);font-weight:600;font-size:14px}
+.pc h3{font-size:28px;margin:4px 0}.pc p{margin:0;color:var(--muted);font-size:15px}
+.cta{background:var(--blued);color:#fff;padding:80px 0}
+.cta .quote{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.cta .quote p{margin:18px 0 0;max-width:26em;font-size:18px}
+.qf input,.qf select,.qf textarea{width:100%;padding:13px 14px;border:0;border-radius:2px;font:inherit;color:#2d3138;background:#fff;margin-bottom:12px}
+.qf :focus-visible{outline-color:#2d3138}
+.qf textarea{min-height:110px;resize:vertical}
+@media (max-width:900px){.cta .quote{grid-template-columns:1fr;gap:28px}}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.cta h2{font-size:clamp(40px,6vw,76px);max-width:11em}
+.cta .btn{background:#fff;color:#1f5f6f;border-color:#fff;font-size:18px;padding:16px 30px}
+
+footer{background:var(--dark);color:var(--dark-muted);padding:56px 0 40px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer h3{font-size:24px;color:var(--dark-ink);margin-bottom:12px}
+footer a{text-decoration:none}footer a:hover{color:var(--blue)}
+footer p{margin:0 0 6px}
+.copy{grid-column:1/-1;border-top:1px solid #4a5058;padding-top:20px;margin-top:8px;font-size:13px}
+
+@media (max-width:900px){
+  .hero .wrap,.intro,.proc{grid-template-columns:1fr}
+  .hero-copy{padding:56px 0 0}
+  .tower{display:none}
+  .panels{flex-direction:column;height:auto}
+  .panel{flex:none}.panel p{max-height:none;opacity:1}.panel .bg{display:none}
+  .vals,footer .wrap,.wall{grid-template-columns:1fr}
+  .step{min-height:0}
+  nav li:not(:last-child){display:none}
+  section{padding:64px 0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .bp .ol{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s ease-out .2s forwards}
+  .bp .fi{animation:fade .7s ease 1.5s both}
+  .bp .tw{transform-box:fill-box;transform-origin:bottom;animation:rise 1s cubic-bezier(.2,.7,.2,1) 1.3s both}
+  .strip div{animation:slide 32s linear infinite}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @keyframes rise{from{transform:scaleY(.2)}to{transform:none}}
+  @keyframes slide{to{transform:translateX(-50%)}}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 330 330">
+    <rect x="105" y="10" width="48" height="290" fill="#4a5059"/><rect x="153" y="10" width="38" height="290" fill="#9a9ca1"/>
+    <rect x="48" y="120" width="48" height="180" fill="#4a5059"/><rect x="96" y="120" width="22" height="180" fill="#9a9ca1"/>
+    <rect x="228" y="120" width="26" height="180" fill="#8e9095"/><rect x="254" y="120" width="30" height="180" fill="#9a9ca1"/>
+    <rect x="128" y="62" width="78" height="238" fill="#6bb7cc"/><rect x="163" y="62" width="5" height="238" fill="#2b7f93"/>
+    <rect x="30" y="298" width="272" height="8" fill="#4a5059"/>
+  </symbol>
+</svg>
+
+<div class="top"><div class="wrap"><span><a href="tel:+27610484766">+27 61 048 4766</a><a href="mailto:dinamodiba85@gmail.com">dinamodiba85@gmail.com</a></span><span><a href="#contact">Request a call back</a></span></div></div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Yana Projects home"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>Yana Projects</b><small>Building Tomorrow, Together.</small></span></a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#process">How we build</a></li><li><a href="#projects">Projects</a></li>
+      <li><a class="btn" href="#contact">Get a quote</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>Building tomorrow, together.</h1>
+        <div class="rot" aria-live="off"><span class="on">Safe sites. Sound structures.</span><span>On time. Within budget.</span><span>One team, survey to handover.</span></div>
+        <p>Engineers, project managers and skilled tradespeople delivering homes and commercial developments across Gauteng. On time, within budget, built to last.</p>
+        <div class="actions"><a class="btn" href="#contact">Start your project</a><a class="btn ghost" href="#process">Watch a build rise</a></div>
+      </div>
+      <!-- Blueprint: outlines draw themselves, then the towers rise -->
+      <svg class="bp" viewBox="0 0 440 330" role="img" aria-label="Blueprint of four towers with foundations, framing and shell levels marked">
+        <line class="g" x1="0" y1="298" x2="440" y2="298"/><line class="g" x1="0" y1="180" x2="440" y2="180"/><line class="g" x1="0" y1="62" x2="440" y2="62"/>
+        <text x="302" y="290">Foundations</text><text x="302" y="172">Framing</text><text x="302" y="54">Shell</text>
+        <g class="tw fi"><rect x="105" y="10" width="48" height="290" fill="var(--b1)"/><rect x="153" y="10" width="38" height="290" fill="var(--b2)"/></g>
+        <g class="tw fi"><rect x="48" y="120" width="48" height="180" fill="var(--b1)"/><rect x="96" y="120" width="22" height="180" fill="var(--b2)"/></g>
+        <g class="tw fi"><rect x="228" y="120" width="26" height="180" fill="var(--b2)"/><rect x="254" y="120" width="30" height="180" fill="#a9acb1"/></g>
+        <g class="tw fi"><rect x="128" y="62" width="78" height="238" fill="var(--blue)"/><rect x="163" y="62" width="5" height="238" fill="var(--blued)"/></g>
+        <g><rect class="ol" pathLength="1" x="105" y="10" width="86" height="290"/><rect class="ol" pathLength="1" x="48" y="120" width="70" height="180"/><rect class="ol" pathLength="1" x="228" y="120" width="56" height="180"/><rect class="ol" pathLength="1" x="128" y="62" width="78" height="238"/></g>
+        <rect x="20" y="298" width="290" height="8" fill="var(--b2)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="strip" aria-hidden="true"><div>
+    <span>Design-Build</span><span>Site preparation</span><span>Foundations</span><span>Structural work</span><span>Plumbing</span><span>Electrical</span><span>HVAC</span>
+    <span>Design-Build</span><span>Site preparation</span><span>Foundations</span><span>Structural work</span><span>Plumbing</span><span>Electrical</span><span>HVAC</span>
+  </div></div>
+
+  <section id="about" class="intro wrap">
+    <h2>Construction is a partnership, not a transaction.</h2>
+    <div>
+      <p>Yana Projects was founded on trust, transparency and innovation. From high-end residential estates to large commercial developments, we turn complex blueprints into lasting structures.</p>
+      <p>You get open communication from first survey to final handover, modern methods that keep programmes tight, and a team that owns the work and fixes problems before you have to ask.</p>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="wrap">
+      <div class="sec-h"><h2>What we do</h2><p>One team from first idea to finished structure. Tap a service to open it.</p></div>
+      <div class="panels">
+        <button class="panel open" aria-expanded="true"><svg class="bg" aria-hidden="true"><use href="#mark"/></svg><h3>Design-Build</h3><p>Feasibility studies, budgeting and cost estimation, value engineering, site surveys and all permit and zoning work, with design and construction under a single contract.</p></button>
+        <button class="panel" aria-expanded="false"><svg class="bg" aria-hidden="true"><use href="#mark"/></svg><h3>Site Preparation &amp; Structural Work</h3><p>Clearing and excavation, foundations, framing the structural skeleton, and the roofing and siding that enclose the building.</p></button>
+        <button class="panel" aria-expanded="false"><svg class="bg" aria-hidden="true"><use href="#mark"/></svg><h3>Mechanical, Electrical &amp; Plumbing</h3><p>Water supply, sewage and drainage; wiring, panels, power and lighting; HVAC installation and maintenance.</p></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-h"><h2>Watch a build rise</h2><p>Scroll. The tower grows with every stage of construction.</p></div>
+      <div class="proc">
+        <div class="tower" aria-hidden="true">
+          <svg viewBox="0 0 160 312">
+            <rect class="fl" data-f="0" x="30" y="248" width="100" height="52"/><rect class="fl" data-f="1" x="30" y="190" width="100" height="52"/>
+            <rect class="fl" data-f="2" x="30" y="132" width="100" height="52"/><rect class="fl" data-f="3" x="30" y="74" width="100" height="52"/>
+            <rect class="fl" data-f="4" x="30" y="16" width="100" height="52"/><rect x="10" y="302" width="140" height="8" fill="var(--b2)"/>
+          </svg>
+        </div>
+        <ol class="steps">
+          <li class="step" data-i="0"><h3>Site preparation</h3><p>Clearing and excavation. We survey, plan and make the ground ready.</p></li>
+          <li class="step" data-i="1"><h3>Foundations</h3><p>Pouring concrete. Everything above depends on getting this right.</p></li>
+          <li class="step" data-i="2"><h3>Framing</h3><p>Erecting the structural skeleton that gives the building its shape.</p></li>
+          <li class="step" data-i="3"><h3>Exterior shell</h3><p>Roofing and siding enclose the structure and protect it from the weather.</p></li>
+          <li class="step" data-i="4"><h3>Services and finish</h3><p>Plumbing, electrical and HVAC go in, then expert finishing to handover.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="wrap">
+      <div class="sec-h"><h2>The Yana way</h2><p>Six principles guide every site, every decision and every handover.</p></div>
+      <div class="vals">
+        <div><b>Quality</b><span>Premium materials and expert finishing at every stage.</span></div>
+        <div><b>Safety</b><span>The highest standard on every site, every day.</span></div>
+        <div><b>Integrity</b><span>Open, honest communication and ethical conduct.</span></div>
+        <div><b>Innovation</b><span>Modern, sustainable methods that future-proof your project.</span></div>
+        <div><b>Accountability</b><span>We own our work and resolve issues proactively.</span></div>
+        <div><b>Team excellence</b><span>Continuous learning for superior craftsmanship.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-h"><h2>Recent projects</h2><p>Drag to compare a project from start to finish, then browse more of our work.</p></div>
+      <!-- To use real photos: replace each .layer's inner <div> with <img src="before.jpg" alt="..."> / <img src="after.jpg" alt="..."> styled width:100%;height:100%;object-fit:cover -->
+      <div class="ba">
+        <div class="layer after"><div>After<small>Add your finished-project photo</small></div></div>
+        <div class="layer before" id="bef"><div>Before<small>Add your site photo</small></div></div>
+        <div class="bar" id="bar"></div>
+        <input type="range" min="0" max="100" value="50" id="rng" aria-label="Compare before and after">
+      </div>
+      <div class="wall">
+        <article class="pc"><div class="ph">Project photo</div><small>New build</small><h3>Project name</h3><p>Location | Year | Completed</p></article>
+        <article class="pc"><div class="ph">Project photo</div><small>Renovation</small><h3>Project name</h3><p>Location | Year | In progress</p></article>
+        <article class="pc"><div class="ph">Project photo</div><small>Commercial</small><h3>Project name</h3><p>Location | Year | Completed</p></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div class="wrap quote">
+      <div><h2>Planning a build? Let’s talk it through.</h2><p>Tell us what you want to build, upgrade or renovate. Include your location and timeline if you can.</p></div>
+      <form class="qf" id="qf">
+        <input name="n" placeholder="Full name" aria-label="Full name" required>
+        <input name="p" type="tel" placeholder="Phone number" aria-label="Phone number" required>
+        <select name="t" aria-label="Project type"><option>New build</option><option>Renovation</option><option>Commercial</option><option>Plumbing, electrical or HVAC</option><option>Not sure yet</option></select>
+        <textarea name="m" placeholder="About your project" aria-label="About your project" required></textarea>
+        <button class="btn" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div><h3>Yana Projects</h3><p>Building Tomorrow, Together.</p><p>Kyalami Hills, Midrand, Gauteng, 1685</p></div>
+    <div><h3>Contact</h3><p><a href="tel:+27610484766">+27 61 048 4766</a></p><p><a href="mailto:dinamodiba85@gmail.com">dinamodiba85@gmail.com</a></p><p><a href="https://www.yanaprojects.com">www.yanaprojects.com</a></p></div>
+    <div><h3>Explore</h3><p><a href="#about">About</a></p><p><a href="#services">Services</a></p><p><a href="#projects">Projects</a></p></div>
+    <div class="copy">© 2026 Yana Projects. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// Service panels: one open at a time
+const panels=[...document.querySelectorAll('.panel')];
+panels.forEach(p=>p.addEventListener('click',()=>panels.forEach(q=>{const o=q===p;q.classList.toggle('open',o);q.setAttribute('aria-expanded',o)})));
+
+// Process: floors light up as each step scrolls into view
+const steps=[...document.querySelectorAll('.step')],floors=[...document.querySelectorAll('.fl')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const i=+e.target.dataset.i;
+  floors.forEach(f=>f.classList.toggle('on',+f.dataset.f<=i));
+  steps.forEach(s=>s.classList.toggle('cur',s===e.target));
+}),{rootMargin:'-45% 0px -45% 0px'});
+steps.forEach(s=>io.observe(s));
+steps[0].classList.add('cur');floors[0].classList.add('on');
+
+// Before/after slider
+const rng=document.getElementById('rng'),bef=document.getElementById('bef'),bar=document.getElementById('bar');
+const setBA=()=>{bef.style.clipPath='inset(0 '+(100-rng.value)+'% 0 0)';bar.style.left=rng.value+'%'};
+rng.addEventListener('input',setBA);setBA();
+
+// Hero: rotating one-liners (paused for reduced motion)
+const rs=[...document.querySelectorAll('.rot span')];let ri=0;
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(()=>{rs[ri].classList.remove('on');ri=(ri+1)%rs.length;rs[ri].classList.add('on')},3200);
+
+// Enquiry form: opens an email draft (swap for a real form service later)
+document.getElementById('qf').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);
+  const body='Name: '+f.get('n')+'\nPhone: '+f.get('p')+'\nProject type: '+f.get('t')+'\n\n'+f.get('m');
+  location.href='mailto:dinamodiba85@gmail.com?subject='+encodeURIComponent('Project enquiry: '+f.get('t'))+'&body='+encodeURIComponent(body)});
+</script>
+</body>
+</html>
