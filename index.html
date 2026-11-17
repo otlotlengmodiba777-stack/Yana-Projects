@@ -21,7 +21,7 @@
 html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dark);z-index:30}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--beige);z-index:30}
 h1,h2,h3{font-family:var(--head);font-weight:800;line-height:.95;margin:0}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -30,15 +30,15 @@ a{color:inherit}
 .btn.ghost{background:transparent;color:var(--dark-ink);border-color:var(--dark-muted)}
 .btn:hover{filter:brightness(1.1)}
 
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--dark);color:var(--dark-ink)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--beige);color:var(--ink);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand svg{width:40px;height:40px}
 .brand b{font:800 25px/1 var(--head);display:block}
-.brand small{font-size:12px;color:var(--dark-muted);display:block;margin-top:3px}
+.brand small{font-size:12px;color:var(--muted);display:block;margin-top:3px}
 nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;align-items:center}
 nav a{text-decoration:none;font-weight:500;font-size:15px}
-nav a:hover{color:var(--blue)}
+nav a:hover{color:var(--btn)}
 nav .btn{padding:10px 20px;color:var(--on-btn)}
 
 /* HERO: blueprint that draws itself */
@@ -46,9 +46,21 @@ nav .btn{padding:10px 20px;color:var(--on-btn)}
   background-image:linear-gradient(rgba(107,183,204,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(107,183,204,.09) 1px,transparent 1px);background-size:48px 48px}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:end;min-height:640px}
 .hero-copy{padding:80px 0 96px;align-self:center;position:relative;z-index:2}
-.hero h1{font-size:clamp(60px,9.5vw,128px)}
+.hero h1{margin:0}
 .hero p{max-width:29em;color:var(--dark-muted);font-size:19px;margin:26px 0 34px}
 .actions{display:flex;gap:14px;flex-wrap:wrap}
+.bgs{position:absolute;inset:0}
+.bgs i{position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 20%,transparent 95%),var(--img) center/cover;opacity:0;transition:opacity .8s}
+.bgs i.on{opacity:1}
+.slides{display:grid;text-transform:uppercase;font-size:clamp(52px,8.2vw,108px)}
+.sl{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .6s,transform .6s,visibility .6s}
+.sl.on{opacity:1;visibility:visible;transform:none}
+.ctrl{display:flex;align-items:center;gap:10px;margin-top:36px}
+.ctrl button{width:44px;height:44px;border:2px solid var(--dark-muted);background:transparent;color:var(--dark-ink);font:700 24px/1 var(--head);cursor:pointer}
+.ctrl button:hover{border-color:var(--blue)}
+.dots{display:flex;gap:6px;margin:0 8px}
+.ctrl .dots button{width:30px;height:6px;border:0;background:#5d646d;padding:0}
+.ctrl .dots button.on{background:var(--blue)}
 .bp{width:100%;display:block;align-self:end}
 .bp .g{stroke:var(--dark-muted);stroke-width:1;stroke-dasharray:4 5;opacity:.55}
 .bp text{fill:var(--blue);font:600 13px var(--body)}
@@ -69,7 +81,7 @@ section{padding:100px 0}
 .sec-h p{color:var(--muted);margin:14px 0 0}
 
 /* services: expanding panels */
-.services{background:var(--surface);border-block:1px solid var(--line)}
+.services{background:var(--blue);color:#1d2a30}
 .panels{display:flex;gap:12px;height:430px}
 .panel{flex:1;min-width:0;background:var(--dark);color:var(--dark-ink);border:0;text-align:left;padding:30px 28px;cursor:pointer;font:inherit;position:relative;overflow:hidden;transition:flex .5s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;justify-content:flex-end}
 .panel::before{content:"";position:absolute;left:0;top:0;width:100%;height:8px;background:var(--blue)}
@@ -93,13 +105,13 @@ section{padding:100px 0}
 .step h3{font-size:clamp(34px,4.5vw,52px);margin-bottom:10px}
 .step p{margin:0;color:var(--muted);max-width:28em;font-size:18px}
 
-.values{background:var(--dark);color:var(--dark-ink)}
-.values .sec-h p{color:var(--dark-muted)}
-.vals{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #4a5058;border-left:1px solid #4a5058}
-.vals div{padding:30px 26px 34px;border-right:1px solid #4a5058;border-bottom:1px solid #4a5058;transition:background .3s}
-.vals div:hover{background:var(--blued)}
+.values{background:var(--blued);color:#fff}
+.values .sec-h p{color:#e4f1f5}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.35);border-left:1px solid rgba(255,255,255,.35)}
+.vals div{padding:30px 26px 34px;border-right:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);transition:background .3s}
+.vals div:hover{background:var(--dark)}
 .vals b{font:800 clamp(30px,3.4vw,42px)/1 var(--head);display:block;margin-bottom:8px}
-.vals span{color:var(--dark-muted);font-size:15.5px;display:block}
+.vals span{color:#e4f1f5;font-size:15.5px;display:block}
 .vals div:hover span{color:#fff}
 
 /* before/after slider */
@@ -115,9 +127,14 @@ section{padding:100px 0}
 .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
 .wall figure{margin:0;aspect-ratio:4/3;display:grid;place-items:center;background:var(--surface);border:2px dashed var(--b2);color:var(--muted);font-size:14px;text-align:center}
 
-.top{background:#272b31;color:var(--dark-muted);font-size:13.5px}
+:root{--beige:#ebe8dd}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--beige:#20242a}}
+:root[data-theme="dark"]{--beige:#20242a}
+.beige{background:var(--beige)}
+.services .sec-h p{color:#1d2a30}
+.top{background:var(--blued);color:#fff;font-size:13.5px}
 .top .wrap{display:flex;justify-content:space-between;gap:16px;min-height:38px;align-items:center;flex-wrap:wrap}
-.top span{display:flex;gap:22px;flex-wrap:wrap}.top a{text-decoration:none}.top a:hover{color:var(--blue)}
+.top span{display:flex;gap:22px;flex-wrap:wrap}.top a{text-decoration:none}.top a:hover{color:var(--dark)}
 .rot{position:relative;height:1.3em;margin-top:22px;font:700 clamp(26px,3.2vw,40px)/1.2 var(--head);color:var(--blue)}
 .rot span{position:absolute;left:0;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
 .rot span.on{opacity:1;transform:none}
@@ -189,12 +206,15 @@ footer p{margin:0 0 6px}
 
 <main id="top">
   <div class="hero">
+    <!-- Banner photos: set --img on each <i> in order, e.g. style="--img:url(site1.jpg)" -->
+    <div class="bgs" aria-hidden="true"><i class="on" style="--img:none"></i><i style="--img:none"></i><i style="--img:none"></i><i style="--img:none"></i></div>
     <div class="wrap">
       <div class="hero-copy">
-        <h1>Building tomorrow, together.</h1>
+        <h1 class="slides"><span class="sl on">Building tomorrow, together.</span><span class="sl">On time. Within budget.</span><span class="sl">Not just a contractor. A partner.</span><span class="sl">From blueprint to handover.</span></h1>
         <div class="rot" aria-live="off"><span class="on">Safe sites. Sound structures.</span><span>On time. Within budget.</span><span>One team, survey to handover.</span></div>
         <p>Engineers, project managers and skilled tradespeople delivering homes and commercial developments across Gauteng. On time, within budget, built to last.</p>
         <div class="actions"><a class="btn" href="#contact">Start your project</a><a class="btn ghost" href="#process">Watch a build rise</a></div>
+        <div class="ctrl"><button id="prev" aria-label="Previous slide">‹</button><div class="dots"><button class="on" aria-label="Slide 1"></button><button aria-label="Slide 2"></button><button aria-label="Slide 3"></button><button aria-label="Slide 4"></button></div><button id="next" aria-label="Next slide">›</button></div>
       </div>
       <!-- Blueprint: outlines draw themselves, then the towers rise -->
       <svg class="bp" viewBox="0 0 440 330" role="img" aria-label="Blueprint of four towers with foundations, framing and shell levels marked">
@@ -215,11 +235,13 @@ footer p{margin:0 0 6px}
     <span>Design-Build</span><span>Site preparation</span><span>Foundations</span><span>Structural work</span><span>Plumbing</span><span>Electrical</span><span>HVAC</span>
   </div></div>
 
-  <section id="about" class="intro wrap">
+  <section id="about" class="beige">
+    <div class="wrap intro">
     <h2>Construction is a partnership, not a transaction.</h2>
     <div>
       <p>Yana Projects was founded on trust, transparency and innovation. From high-end residential estates to large commercial developments, we turn complex blueprints into lasting structures.</p>
       <p>You get open communication from first survey to final handover, modern methods that keep programmes tight, and a team that owns the work and fixes problems before you have to ask.</p>
+    </div>
     </div>
   </section>
 
@@ -270,7 +292,7 @@ footer p{margin:0 0 6px}
     </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="beige">
     <div class="wrap">
       <div class="sec-h"><h2>Recent projects</h2><p>Drag to compare a project from start to finish, then browse more of our work.</p></div>
       <!-- To use real photos: replace each .layer's inner <div> with <img src="before.jpg" alt="..."> / <img src="after.jpg" alt="..."> styled width:100%;height:100%;object-fit:cover -->
@@ -326,6 +348,16 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{rootMargin:'-45% 0px -45% 0px'});
 steps.forEach(s=>io.observe(s));
 steps[0].classList.add('cur');floors[0].classList.add('on');
+
+// Hero banner: rotating statements (pauses for reduced-motion users)
+const sl=[...document.querySelectorAll('.sl')],bg=[...document.querySelectorAll('.bgs i')],dots=[...document.querySelectorAll('.dots button')];
+let n=0,t;
+const go=i=>{n=(i+sl.length)%sl.length;[sl,bg,dots].forEach(a=>a.forEach((e,j)=>e.classList.toggle('on',j===n)))};
+const play=()=>{clearInterval(t);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)t=setInterval(()=>go(n+1),5500)};
+document.getElementById('prev').onclick=()=>{go(n-1);play()};
+document.getElementById('next').onclick=()=>{go(n+1);play()};
+dots.forEach((d,j)=>d.onclick=()=>{go(j);play()});
+play();
 
 // Before/after slider
 const rng=document.getElementById('rng'),bef=document.getElementById('bef'),bar=document.getElementById('bar');
